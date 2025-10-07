@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% block content %}
+<h2>Simulate Payment for Loan #{{app.id}}</h2>
+<p>Amount: {{app.amount}}</p>
+<form method="post">{% csrf_token %}
+<div class="mb-3">
+  <label>Select Gateway</label>
+  <select name="gateway" class="form-select">
+    <option value="ecocash">EcoCash</option>
+    <option value="zipit">Zipit</option>
+  </select>
+</div>
+<button class="btn btn-primary">Simulate Payment</button>
+</form>
+{% endblock %}

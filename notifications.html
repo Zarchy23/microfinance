@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% block content %}
+<h2>Notifications</h2>
+<ul class="list-group">
+{% for n in notifs %}
+  <li class="list-group-item d-flex justify-content-between">
+    <div>{{n.message}} <br><small class="text-muted">{{n.created_at}}</small></div>
+    {% if not n.read %}
+      <a class="btn btn-sm btn-outline-success" href="/mark-notif/{{n.id}}/">Mark Read</a>
+    {% else %}
+      <span class="badge bg-secondary">Read</span>
+    {% endif %}
+  </li>
+{% empty %}<li class="list-group-item">No notifications</li>{% endfor %}
+</ul>
+{% endblock %}

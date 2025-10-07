@@ -1,0 +1,30 @@
+{% extends 'base.html' %}{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Admin Dashboard</h2>
+  <div>
+    <a class="btn btn-sm btn-outline-secondary" href="/export-loans/">Export CSV</a>
+  </div>
+</div>
+<p>Notifications: <a href="/notifications/"><span class="badge bg-warning text-dark">{{ notif_count }}</span></a></p>
+<canvas id="adminChart" width="400" height="150"></canvas>
+<table class="table mt-3">
+<thead><tr><th>ID</th><th>Client</th><th>Amount</th><th>Term</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody>
+{% for a in apps %}
+<tr>
+<td>{{a.id}}</td><td>{{a.client}}</td><td>{{a.amount}}</td><td>{{a.term_months}}</td><td>{{a.status}}</td>
+<td>
+  <a class="btn btn-sm btn-primary" href="/assess/{{a.id}}/">Assess</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<script>
+const ctx = document.getElementById('adminChart');
+if (ctx) {
+  new Chart(ctx, {type:'bar', data:{labels:{{ chart_labels|safe }}, datasets:[{label:'Loans', data:{{ chart_data|safe }} }]}, options:{}});
+}
+</script>
+{% endblock %}

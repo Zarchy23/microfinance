@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smartmicro Finance</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="/">Smartmicro Finance</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        {% if user.is_authenticated %}
+          {% if user.is_staff %}
+            <li class="nav-item"><a class="nav-link" href="/admin-dashboard/">Admin Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="/notifications/">Notifications <span class="badge bg-warning text-dark">{{ notif_count }}</span></a></li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="/dashboard/">My Dashboard</a></li>
+          {% endif %}
+          <li class="nav-item"><a class="nav-link" href="/logout/">Logout</a></li>
+        {% else %}
+          <li class="nav-item"><a class="nav-link" href="/register/">Register</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login/">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+<main class="container my-4">
+  {% if messages %}{% for m in messages %}<div class="alert alert-info">{{m}}</div>{% endfor %}{% endif %}
+  {% block content %}{% endblock %}
+</main>
+<footer class="bg-light py-3 text-center">
+  <div class="container"><small>© Smartmicro Finance Prototype</small></div>
+</footer>
+</body>
+</html>

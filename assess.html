@@ -1,0 +1,8 @@
+{% extends 'base.html' %}{% block content %}
+<h2>Assess Application #{{app.id}}</h2>
+<p>Client: {{app.client}} | Amount: {{app.amount}} | Income: {{app.annual_income}} | Debt: {{app.existing_debt}}</p>
+<form method="post">{% csrf_token %}
+<div class="mb-3"><label>Notes (optional)</label><textarea name="notes" class="form-control"></textarea></div>
+<button class="btn btn-success">Run Assessment & Save</button>
+</form>
+{% endblock %}

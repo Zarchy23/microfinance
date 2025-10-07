@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#03a9f4"/><stop offset="1" stop-color="#02b388"/></linearGradient></defs>
+  <rect width="1200" height="400" fill="url(#g)"/>
+  <g fill="#ffffff" opacity="0.12"><circle cx="150" cy="80" r="80"/><circle cx="1050" cy="320" r="120"/></g>
+  <text x="50" y="200" font-size="42" fill="#fff" font-family="Arial">Smartmicro Finance - Loan Risk Assessment</text>
+</svg>
